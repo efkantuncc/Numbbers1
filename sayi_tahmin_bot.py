@@ -23,9 +23,9 @@ def send_welcome(message):
     markup.add(types.InlineKeyboardButton("🤠 Sahip", url="https://t.me/t3rickg"))
     
     # Başlangıç mesajını gönder
-    bot.reply_to(message, "Merhaba! Benimle sayı tahmin oyununa başlamak için /guess komutunu kullanabilirsin.", reply_markup=markup)
+    bot.reply_to(message, "Merhaba! Benimle sayı tahmin oyununa başlamak için /s komutunu kullanabilirsin.", reply_markup=markup)
 
-@bot.message_handler(commands=['guess'])
+@bot.message_handler(commands=['s'])
 def handle_guess(message):
     global guesses
     try:
