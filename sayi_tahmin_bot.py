@@ -34,16 +34,16 @@ def handle_guess(message):
         if guess < minimum or guess > maximum:
             bot.reply_to(message, "Lütfen {}. ve {}. arasında bir sayı giriniz.".format(minimum, maximum))
         elif guess < secret_number:
-            bot.reply_to(message, "Daha büyük bir sayı girin.")
+            bot.reply_to(message, "⬆️ Daha büyük bir sayı girin.")
         elif guess > secret_number:
-            bot.reply_to(message, "Daha küçük bir sayı girin.")
+            bot.reply_to(message, "⬇️ Daha küçük bir sayı girin.")
         else:
-            bot.reply_to(message, "Tebrikler! Doğru tahmin ettiniz. {} denemede buldunuz.".format(guesses))
+            bot.reply_to(message, "🎉 Tebrikler! Doğru tahmin ettiniz. {} denemede buldunuz.".format(guesses))
             send_play_again_button(message)
             # Oyunu sıfırla
             reset_game()
     except:
-        bot.reply_to(message, "Lütfen geçerli bir sayı girin.")
+        bot.reply_to(message, "❌ Lütfen geçerli bir sayı girin.")
 
 def send_play_again_button(message):
     # Tekrar Oyna butonunu gönder
