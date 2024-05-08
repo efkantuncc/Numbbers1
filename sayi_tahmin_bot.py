@@ -13,7 +13,7 @@ def send_welcome(message):
     
     # Buton oluştur
     button = types.InlineKeyboardMarkup()
-    button.add(types.InlineKeyboardButton("🤠 Sahip", url="https://t.me/@t3rickg"))
+    button.add(types.InlineKeyboardButton("🤠 Sahip", url="@t3rickg"))
     
     # Butonlu mesajı gönder
     bot.send_message(message.chat.id, "Merhaba! Benimle oynamak için /guess komutunu kullanabilirsin.", reply_markup=button)
