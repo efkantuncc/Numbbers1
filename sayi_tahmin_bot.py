@@ -20,12 +20,12 @@ def send_welcome(message):
     
     # Buton oluştur
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton("🤠 Sahip", url="t.me/t3rickg"))
+    markup.add(types.InlineKeyboardButton("🤠 Sahip", url="https://t.me/t3rickg"))
     
     # Başlangıç mesajını gönder
-    bot.reply_to(message, "Merhaba! Benimle sayı tahmin oyununa başlamak için /s komutunu kullanabilirsin.", reply_markup=markup)
+    bot.reply_to(message, "Merhaba! Benimle sayı tahmin oyununa başlamak için /guess komutunu kullanabilirsin.", reply_markup=markup)
 
-@bot.message_handler(commands=['s'])
+@bot.message_handler(commands=['guess'])
 def handle_guess(message):
     global guesses
     try:
@@ -39,10 +39,24 @@ def handle_guess(message):
             bot.reply_to(message, "Daha küçük bir sayı girin.")
         else:
             bot.reply_to(message, "Tebrikler! Doğru tahmin ettiniz. {} denemede buldunuz.".format(guesses))
+            send_play_again_button(message)
             # Oyunu sıfırla
             reset_game()
     except:
         bot.reply_to(message, "Lütfen geçerli bir sayı girin.")
+
+def send_play_again_button(message):
+    # Tekrar Oyna butonunu gönder
+    markup = types.InlineKeyboardMarkup()
+    markup.add(types.InlineKeyboardButton("🎲 Tekrar Oyna", callback_data="play_again"))
+    bot.send_message(message.chat.id, "Tekrar oynamak ister misiniz?", reply_markup=markup)
+
+@bot.callback_query_handler(func=lambda call: True)
+def callback_handler(call):
+    if call.data == "play_again":
+        bot.send_message(call.message.chat.id, "Yeni bir oyun başlatılıyor...")
+        reset_game()
+        send_welcome(call.message)
 
 def reset_game():
     global secret_number, guesses
