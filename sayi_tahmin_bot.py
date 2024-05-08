@@ -3,7 +3,7 @@ from telebot import types
 import random  
 
 # Telegram bot tokenını buraya girin
-TOKEN = '7172697421:AAGbjLQ7-WVWz_xVg-d0sL3EWxfg4FSlZos'
+TOKEN = '7045807052:AAG3uOPM_3cQN4qYPnOWNhpLDFX2sGzMPLc'
 bot = telebot.TeleBot(TOKEN)
 
 # Oyun için gerekli değişkenler
