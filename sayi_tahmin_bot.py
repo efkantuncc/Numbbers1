@@ -20,7 +20,7 @@ def send_welcome(message):
     
     # Buton oluştur
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton("🤠 Sahip", url="https://t.me/@t3rickg"))
+    markup.add(types.InlineKeyboardButton("🤠 Sahip", url="@t3rickg"))
     
     # Başlangıç mesajını gönder
     bot.reply_to(message, "Merhaba! Benimle sayı tahmin oyununa başlamak için /guess komutunu kullanabilirsin.", reply_markup=markup)
