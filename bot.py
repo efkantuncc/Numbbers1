@@ -1,4 +1,5 @@
 import telebot
+from telebot import types
 import time
 
 # Bot tokenini buraya yapıştır
