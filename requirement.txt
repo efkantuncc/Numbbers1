@@ -1,1 +1,1 @@
-pip install pyTelegramBotAPI==4.0.0
+pyTelegramBotAPI==4.0.0
