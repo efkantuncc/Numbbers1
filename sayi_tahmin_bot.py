@@ -1,19 +1,22 @@
 import telebot
-import random
+from telebot import types
 
 # Telegram bot tokenını buraya girin
-TOKEN = '7075891544:AAEvxq61Tu97HGoOZkzoZtJztmXlzivqPw4'
+TOKEN = '7172697421:AAGbjLQ7-WVWz_xVg-d0sL3EWxfg4FSlZos'
 bot = telebot.TeleBot(TOKEN)
-
-# Oyun için gerekli değişkenler
-minimum = 1
-maximum = 100
-secret_number = random.randint(minimum, maximum)
-guesses = 0
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.reply_to(message, "Merhaba! Benimle sayı tahmin oyununa başlamak için /guess komutunu kullanabilirsin.")
+    # Fotoğrafı gönder
+    photo_url = "https://i.hizliresim.com/633fzxo.png"
+    bot.send_photo(message.chat.id, photo_url)
+    
+    # Buton oluştur
+    button = types.InlineKeyboardMarkup()
+    button.add(types.InlineKeyboardButton("🤠 Sahip", url="https://t.me/@t3rickg"))
+    
+    # Butonlu mesajı gönder
+    bot.send_message(message.chat.id, "Merhaba! Benimle oynamak için /guess komutunu kullanabilirsin.", reply_markup=button)
 
 @bot.message_handler(commands=['guess'])
 def handle_guess(message):
